@@ -18,6 +18,6 @@ namespace MCTS
         
         public abstract AbstractGameState RunSimulation();
         
-        public IEnumerable<AbstractAction> GetMoves();
+        public abstract IEnumerable<AbstractAction> GetMoves();
     }
 }
