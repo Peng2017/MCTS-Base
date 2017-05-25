@@ -8,16 +8,19 @@ public static class MCTS
     public static AbstractAction GetDecision(AbstractGameState state)
     {
         // create initial node to be the root node of the search tree
+        AbstractNode root = new AbstractNode(state);
         
         // as long as the search has not terminated
         // while !done ?
         // for set-iterations ?
         {
+            AbstractNode node = root;
+            
             // SELECT
             // -> do recursively? requires passing policy into the node or selectChild() call itself
             // as long as the current node is not a terminal node, and has not been fully expanded
             // choose a child based on the SELECTION POLICY
-            
+            node = Select(node);
             
             // EXPAND
             // -> perform locally
@@ -37,15 +40,23 @@ public static class MCTS
     }
     
     /*
-     *
+     * -> do recursively? requires passing policy into the node or selectChild() call itself
+     * as long as the current node is not a terminal node, and has not been fully expanded
+     * choose a child based on the SELECTION POLICY
      */
     private static AbstractNode Select(AbstractNode node)
     {
-        return null;
+        if(node.isTerminalAndFullyExpanded)
+            return node;
+        else
+            return null;
+        
+            // TODO: define/apply selection policy on Collection of childNodes
+            // return Select(node);
     }
     
     /*
-     *
+     * 
      */
     private static AbstractNode Expand(AbstractNode node)
     {
